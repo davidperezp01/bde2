@@ -30,7 +30,7 @@ public class ControllerProducto {
     public String nuevoProductoForm(Model model) {
         model.addAttribute("formProductos", new Producto());
         model.addAttribute("categorias", serviceCa.findAll());
-        return "newProducto";
+        return "newproducto";
     }
 
     @GetMapping("/productos/edit/{idProducto}")
@@ -39,7 +39,7 @@ public class ControllerProducto {
         if (producto != null) {
             model.addAttribute("formProductos", producto);
             model.addAttribute("categorias", serviceCa.findAll());
-            return "newProducto";
+            return "newproducto";
         } else {
             return "redirect:/producto/newProducto";
         }

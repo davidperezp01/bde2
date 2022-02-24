@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/starter-template.css" rel="stylesheet">
+    <title>Productos</title>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand"  href="/productos/newProducto">Nuevo producto </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Listado productos </a></li>
+                <li><a href="/productos/newProducto">Nuevo producto </a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Productos</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>precioEntrada</th>
+                <th>nombre</th>
+                <th>Descripcion</th>
+                <th>categoria</th>
+                <th>imagen</th>
+            </thead>
+            <tbody>
+            <tr th:each="producto : ${productos}">
+                <td th:text="${producto.idProducto}">ID</td>
+                <td th:text="${producto.precioEntrada}">1000</td>
+                <td th:text="${producto.nombre}">casa</td>
+                <td th:text="${producto.descripcion}">100 metros cuadrados</td>
+                <td th:text="${producto.categoria}">inmueble</td>
+                <td th:text="${producto.imagen}">link</td>
+                <td><a th:href="@{/productos/edit/{idProducto}(idProducto=${producto.idProducto})}" class="btn btn-primary">Editar</a>
+                    <a th:href="@{/productos/borrar/{idProducto}(idProducto=${producto.idProducto})}" class="btn btn-danger">Borrar</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{assets/password-strength-meter/password.min.js}"></script>
+</body>
+</html>
